@@ -170,9 +170,69 @@ select * from pizza where valor between 17 and 20;
 
 -- selecionar todas as pizzas com valores fora das faixabde 17,00 e 20
 
-select * from pizza where valor < 17 or valor > 20
-select * from pizza where not between 17 and 20
+select * from pizza where valor < 17 or valor > 20;
+select * from pizza where not between 17 and 20;
 select * from pizza where not (valor >= 17 and valor <= 20);
 
+-- selecionar todas as pizzas com valores iguais a 17,00 e 20,00
+
+SELECT * FROM pizza WHERE valor = 17 OR valor = 20,;
+SELECT * FROM pizza WHERE valor IN (17,20);
+
+-- selecionar todas as pizzas com valores diferentes de 17,00 e 20,00
+SELECT * FROM pizza WHERE valor != 17 and valor != 20,;
+SELECT * FROM pizza WHERE valor NOT IN (17,20);
+
+-- selecionar todas as pizzas com valores nullos
+SELECT * FROM pizza WHERE valor <=> NULL;
+SELECT * FROM pizza WHERE valor IS NULL;
+
+-- selecionar todas as pizzas com valores diferentes de nullos
+SELECT * FROM pizza WHERE valor IS NOT NULL;
+
+-- selecionar todas as pizzas começam com a letra E
+SELECT * FROM pizza WHERE nome LIKE 'e%';
+
+-- selecionar todas as pizzas terminam com a letra A
+SELECT * FROM pizza WHERE nome LIKE '%a';
+
+-- selecionar todas as pizzas que tem as letras RO
+SELECT * FROM pizza WHERE nome LIKE '%ro%';
+
+-- ordenar coluna
+-- desc ou asc sao opcoes de ordenacao
+SELECT * FROM pizza order by valor desc;
+
+-- selecionar as 3 pizzas mais caras
+SELECT * FROM pizza order by valor desc limit 4;
+
+
+
+/* Funções de Agregações
+	AVG = Medisa de valores
+	COUNT = Conta o numero de linhas 
+ 	MAX = Maior valor
+	MIN = Menor valor
+	SUM = Soma dos valores
+*/
+
+
+-- qual e o preço medio das pizzas?
+select avg(valor) as preco_medio from pizza;
+select avg(valor) as preco_medio from pizza p where nome like '%esa';
+
+-- quantos sabores cadastrados?
+
+select count(*) as qtde from pizza;
+select count(valor) as qtde from pizza;
+
+-- qual e a pizza mais cara?
+select max(valor) as maior_valor from pizza;
+
+-- qual e a pizza mais barata?
+select min(valor) as menor_valor from pizza;
+
+-- qual a soma de tods os valores?
+select sum (valor) as soma from pizza;
 
 
